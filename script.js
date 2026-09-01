@@ -637,21 +637,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ======================================================
-// VOLTEAR TARJETAS - CLIC + HOVER
+// VOLTEAR TARJETAS - VERSIÓN SIMPLE (SOLO CLICK)
 // ======================================================
 document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', function(e) {
+        // Si el clic fue en el botón, no volteamos
         if (e.target.closest('.btn-flip')) return;
+        // Toggle: si tiene la clase, la quita; si no, la pone
         this.classList.toggle('flipped');
     });
 
-    card.addEventListener('mouseenter', function() {
-        this.classList.add('flipped');
-    });
-    card.addEventListener('mouseleave', function() {
-        this.classList.remove('flipped');
-    });
-
+    // Accesibilidad
     card.setAttribute('tabindex', '0');
     card.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
