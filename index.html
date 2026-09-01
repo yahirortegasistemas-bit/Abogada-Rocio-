@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abogada Rocío Ramos · Litigio Estratégico 3D</title>
+    <meta name="description" content="Protegiendo tus derechos y defendiendo tus intereses con profesionalismo. Tu abogada de confianza en cada paso legal." />
+    
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="styles.css" />
+    
+    <!-- ===== FUENTES ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- ===== THREE.JS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- ===== FONT AWESOME ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+    <!-- ====== PRELOADER ====== -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <span class="preloader-letter">RR</span>
+            <div class="preloader-line"></div>
+            <p>Preparando estrategia legal...</p>
+        </div>
+    </div>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#inicio">
+                    <div class="logo-3d">
+                        <span class="logo-letter-3d">RR</span>
+                        <div class="logo-text-3d">
+                            <span class="logo-despacho-3d">DESPACHO JURÍDICO</span>
+                            <span class="logo-abogada-3d">ABOGADA</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#casos-exito">Casos de Éxito</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <a href="#contacto" class="btn btn-primary btn-sm">Agenda tu Consulta</a>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== HERO 3D ====== -->
+    <section class="hero-3d" id="inicio">
+        <div id="three-container"></div>
+        <div class="hero-overlay-3d"></div>
+        
+        <div class="hero-content-3d">
+            <div class="hero-badge-3d">Abogada Rocío Ramos</div>
+            <h1>
+                Protegiendo tus derechos<br />
+                y defendiendo tus intereses<br />
+                con <span class="highlight">profesionalismo</span>
+            </h1>
+            <p class="hero-desc-3d">
+                <strong>Tu abogada de confianza en cada paso legal.</strong><br />
+                <span class="highlight">Litigio Civil · Asuntos Familiares · Materia Penal</span>
+            </p>
+            <div class="hero-buttons-3d">
+                <a href="#contacto" class="btn btn-primary btn-3d">Agenda tu Consulta</a>
+                <a href="#servicios" class="btn btn-outline-3d">Conoce mis servicios</a>
+            </div>
+            <div class="hero-stats-3d">
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="1800">0</span>
+                    <span class="stat-label">Clientes de confianza</span>
+                </div>
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="95">0</span>
+                    <span class="stat-label">% Casos de éxito</span>
+                </div>
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="2620">0</span>
+                    <span class="stat-label">Casos registrados</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Descubre más</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ====== SOBRE MÍ ====== -->
+    <section class="sobre-mi" id="sobre-mi">
+        <div class="container sobre-mi-container">
+            <div class="sobre-mi-image">
+                <div class="sobre-mi-image-wrapper">
+                    <img src="img2.jpeg" alt="Abogada Rocío Ramos" />
+                    <div class="sobre-mi-badge">
+                        <i class="fas fa-award"></i>
+                        <span>+10 años de experiencia</span>
+                    </div>
+                </div>
+                <div class="sobre-mi-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Si el hombre fracasa en conciliar la justicia y la libertad, fracasa en todo.</p>
+                    <span>— ALBERT CAMUS</span>
+                </div>
+            </div>
+            <div class="sobre-mi-content">
+                <span class="section-tag">Sobre mí</span>
+                <h2>Defendemos tus derechos con <span class="highlight">dedicación y experiencia</span> legal</h2>
+                <p>
+                    Con más de una década de experiencia, estoy comprometida a ofrecer servicios legales integrales. 
+                    Mi enfoque es brindar asesoría experta y resultados efectivos para cada cliente.
+                </p>
+                <p>
+                    <strong>Cada individuo que confía en nosotros y atraviesa nuestras puertas es de suma importancia.</strong> 
+                    Valoramos profundamente a cada cliente y nos comprometemos a brindar un servicio excepcional y personalizado.
+                </p>
+                <div class="sobre-mi-values">
+                    <div class="value-3d">
+                        <div class="value-circle">
+                            <span>100%</span>
+                        </div>
+                        <h4>Confidencialidad</h4>
+                    </div>
+                    <div class="value-3d">
+                        <div class="value-circle">
+                            <span>95%</span>
+                        </div>
+                        <h4>Casos de éxito</h4>
+                    </div>
+                    <div class="value-3d">
+                        <div class="value-circle">
+                            <span>1800+</span>
+                        </div>
+                        <h4>Clientes</h4>
+                    </div>
+                </div>
+                <a href="#contacto" class="btn btn-primary">Confía en mí</a>
+            </div>
+        </div>
+    </section>
+
+       <!-- ====== SERVICIOS CON TARJETAS VOLTEABLES ====== -->
+    <section class="servicios-3d" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2>Asesoría Legal <span class="highlight">Experta</span></h2>
+                <p>Contar con asesoramiento legal experto desde el inicio no solo mejorará significativamente tus posibilidades de éxito, sino que también garantizará una resolución óptima para tu caso.</p>
+            </div>
+            <div class="servicios-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="civil"><i class="fas fa-home"></i> Civil</button>
+                    <button class="tab-btn" data-tab="familiar"><i class="fas fa-users"></i> Familiar</button>
+                    <button class="tab-btn" data-tab="penal"><i class="fas fa-gavel"></i> Penal</button>
+                </div>
+                <div class="tabs-content">
+                    <!-- ===== CIVIL ===== -->
+                    <div class="tab-panel active" id="tab-civil">
+                        <div class="servicios-grid">
+                            <!-- 1. Regularización de Propiedad -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-signature"></i>
+                                        <h4>Regularización de Propiedad</h4>
+                                        <p>Asegura un estatus legal sólido para tu patrimonio.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Regularización de Propiedad</h4>
+                                        <ul>
+                                            <li>Revisión y análisis de escrituras</li>
+                                            <li>Gestión ante el Registro Público</li>
+                                            <li>Corrección de errores catastrales</li>
+                                            <li>Obtención de certificados de libertad</li>
+                                            <li>Asesoría en todo el proceso legal</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Prescripción Adquisitiva -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-home"></i>
+                                        <h4>Prescripción Adquisitiva</h4>
+                                        <p>Garantiza la propiedad de forma segura y eficiente.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Prescripción Adquisitiva</h4>
+                                        <ul>
+                                            <li>Análisis de posesión y tiempo</li>
+                                            <li>Recolección de pruebas y testigos</li>
+                                            <li>Elaboración de demanda</li>
+                                            <li>Seguimiento judicial completo</li>
+                                            <li>Obtención de sentencia favorable</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Incumplimiento de Contratos -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-contract"></i>
+                                        <h4>Incumplimiento de Contratos</h4>
+                                        <p>Resolución proactiva de casos civiles y mercantiles.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Incumplimiento de Contratos</h4>
+                                        <ul>
+                                            <li>Análisis detallado del contrato</li>
+                                            <li>Evaluación de daños y perjuicios</li>
+                                            <li>Negociación y mediación</li>
+                                            <li>Demanda por incumplimiento</li>
+                                            <li>Ejecución de sentencias</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Escrituras Públicas -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-stamp"></i>
+                                        <h4>Escrituras Públicas</h4>
+                                        <p>Asesoría y asistencia para transparencia y validez legal.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Escrituras Públicas</h4>
+                                        <ul>
+                                            <li>Redacción de escrituras</li>
+                                            <li>Asesoría en compra-venta</li>
+                                            <li>Gestión ante notario público</li>
+                                            <li>Revisión de cláusulas</li>
+                                            <li>Inscripción en el Registro Público</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Desacuerdos entre Copropietarios -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-building"></i>
+                                        <h4>Desacuerdos entre Copropietarios</h4>
+                                        <p>Manejo experto para una convivencia armoniosa.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Desacuerdos entre Copropietarios</h4>
+                                        <ul>
+                                            <li>Mediación y conciliación</li>
+                                            <li>Asesoría en régimen de propiedad</li>
+                                            <li>Elaboración de acuerdos</li>
+                                            <li>Representación legal</li>
+                                            <li>Solución de conflictos vecinales</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Recuperación de Cartera -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-coins"></i>
+                                        <h4>Recuperación de Cartera</h4>
+                                        <p>Estrategias efectivas para proteger tus intereses financieros.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Recuperación de Cartera</h4>
+                                        <ul>
+                                            <li>Análisis de cartera vencida</li>
+                                            <li>Negociación con deudores</li>
+                                            <li>Demandas ejecutivas</li>
+                                            <li>Embargos y ejecuciones</li>
+                                            <li>Seguimiento jurídico completo</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== FAMILIAR ===== -->
+                    <div class="tab-panel" id="tab-familiar">
+                        <div class="servicios-grid">
+                            <!-- 1. Pensión Alimenticia -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-baby"></i>
+                                        <h4>Pensión Alimenticia</h4>
+                                        <p>Asesoría experta para garantizar el bienestar de tus hijos.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Pensión Alimenticia</h4>
+                                        <ul>
+                                            <li>Cálculo de montos justos</li>
+                                            <li>Negociación con la contraparte</li>
+                                            <li>Demanda por pensión</li>
+                                            <li>Modificación de pensiones</li>
+                                            <li>Ejecución y cobro de pensiones</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Gestión de Divorcios -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-gavel"></i>
+                                        <h4>Gestión de Divorcios</h4>
+                                        <p>Acompañamiento estratégico en procesos de separación.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Gestión de Divorcios</h4>
+                                        <ul>
+                                            <li>Divorcio voluntario y necesario</li>
+                                            <li>Liquidación de sociedad conyugal</li>
+                                            <li>Convenio de divorcio</li>
+                                            <li>Guarda y custodia de hijos</li>
+                                            <li>Pensión alimenticia y compensación</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Pérdida de Patria Potestad -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-user-slash"></i>
+                                        <h4>Pérdida de Patria Potestad</h4>
+                                        <p>Resolución efectiva de casos complejos.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Pérdida de Patria Potestad</h4>
+                                        <ul>
+                                            <li>Asesoría en casos de maltrato</li>
+                                            <li>Recolección de pruebas</li>
+                                            <li>Demanda de pérdida de patria potestad</li>
+                                            <li>Representación de los menores</li>
+                                            <li>Seguimiento judicial completo</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Guarda y Custodia -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>Guarda y Custodia</h4>
+                                        <p>Protección de los derechos de tus hijos.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Guarda y Custodia</h4>
+                                        <ul>
+                                            <li>Asesoría en custodia compartida</li>
+                                            <li>Régimen de visitas</li>
+                                            <li>Demanda de custodia</li>
+                                            <li>Modificación de custodias</li>
+                                            <li>Protección de derechos de los menores</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Juicios Sucesorios -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-invoice"></i>
+                                        <h4>Juicios Sucesorios</h4>
+                                        <p>Asistencia en testamentarios e intestamentarios.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Juicios Sucesorios</h4>
+                                        <ul>
+                                            <li>Testamentarios e intestamentarios</li>
+                                            <li>Inventario y avalúo de bienes</li>
+                                            <li>Repartición de herencia</li>
+                                            <li>Impugnación de testamentos</li>
+                                            <li>Asesoría en todo el proceso</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Juicios de Interdicción -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-balance-scale"></i>
+                                        <h4>Juicios de Interdicción</h4>
+                                        <p>Representación legal especializada.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Juicios de Interdicción</h4>
+                                        <ul>
+                                            <li>Asesoría en incapacidad legal</li>
+                                            <li>Demanda de interdicción</li>
+                                            <li>Designación de tutor</li>
+                                            <li>Administración de bienes</li>
+                                            <li>Protección de derechos del incapaz</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== PENAL ===== -->
+                    <div class="tab-panel" id="tab-penal">
+                        <div class="servicios-grid">
+                            <!-- 1. Robos, Hurtos y Apropiaciones -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-handcuffs"></i>
+                                        <h4>Robos, Hurtos y Apropiaciones</h4>
+                                        <p>Solución eficaz para delitos patrimoniales.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Robos, Hurtos y Apropiaciones</h4>
+                                        <ul>
+                                            <li>Defensa en delitos patrimoniales</li>
+                                            <li>Estrategia de defensa técnica</li>
+                                            <li>Negociación con la fiscalía</li>
+                                            <li>Reducción de penas</li>
+                                            <li>Protección de derechos del imputado</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Delitos de Alcoholemia -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-car"></i>
+                                        <h4>Delitos de Alcoholemia</h4>
+                                        <p>Asesoramiento especializado en conducción temeraria.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Delitos de Alcoholemia</h4>
+                                        <ul>
+                                            <li>Defensa en casos de alcoholemia</li>
+                                            <li>Impugnación de pruebas</li>
+                                            <li>Recursos legales ante multas</li>
+                                            <li>Reducción de sanciones</li>
+                                            <li>Recuperación de licencia</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Estafas y Fraudes -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                        <h4>Estafas y Fraudes</h4>
+                                        <p>Defensa contra falsedades y malversación.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Estafas y Fraudes</h4>
+                                        <ul>
+                                            <li>Defensa en delitos financieros</li>
+                                            <li>Análisis de evidencias</li>
+                                            <li>Estrategia de litigio</li>
+                                            <li>Protección de derechos del acusado</li>
+                                            <li>Recursos de apelación</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Delitos contra la Libertad -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-fist-raised"></i>
+                                        <h4>Delitos contra la Libertad</h4>
+                                        <p>Defensa aguerrida para proteger tus derechos.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Delitos contra la Libertad</h4>
+                                        <ul>
+                                            <li>Defensa en casos de secuestro</li>
+                                            <li>Protección de derechos humanos</li>
+                                            <li>Estrategia de litigio penal</li>
+                                            <li>Recursos constitucionales</li>
+                                            <li>Seguimiento judicial completo</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Violencia de Género -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-venus-mars"></i>
+                                        <h4>Violencia de Género</h4>
+                                        <p>Compromiso firme para erradicar la violencia.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Violencia de Género</h4>
+                                        <ul>
+                                            <li>Asesoría a víctimas de violencia</li>
+                                            <li>Medidas de protección</li>
+                                            <li>Denuncias y seguimiento</li>
+                                            <li>Representación legal</li>
+                                            <li>Acompañamiento psicológico legal</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Lesiones -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-heartbeat"></i>
+                                        <h4>Lesiones</h4>
+                                        <p>Abordaje con seriedad y profesionalismo.</p>
+                                        <span class="flip-hint">← Toca para más información →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>Lesiones</h4>
+                                        <ul>
+                                            <li>Defensa en casos de lesiones</li>
+                                            <li>Negociación con la fiscalía</li>
+                                            <li>Reparación de daños</li>
+                                            <li>Protección de derechos del imputado</li>
+                                            <li>Seguimiento judicial</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                    <!-- ===== FAMILIAR ===== -->
+                    <div class="tab-panel" id="tab-familiar">
+                        <div class="servicios-grid">
+                            <!-- 1. Pensión Alimenticia -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-baby"></i>
+                                        <h4>Pensión Alimenticia</h4>
+                                        <p>Asesoría experta para garantizar el bienestar de tus hijos.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Pensión Alimenticia</h4>
+                                        <ul>
+                                            <li>✔️ Cálculo de montos justos</li>
+                                            <li>✔️ Negociación con la contraparte</li>
+                                            <li>✔️ Demanda por pensión</li>
+                                            <li>✔️ Modificación de pensiones</li>
+                                            <li>✔️ Ejecución y cobro de pensiones</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Gestión de Divorcios -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-gavel"></i>
+                                        <h4>Gestión de Divorcios</h4>
+                                        <p>Acompañamiento estratégico en procesos de separación.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Gestión de Divorcios</h4>
+                                        <ul>
+                                            <li>✔️ Divorcio voluntario y necesario</li>
+                                            <li>✔️ Liquidación de sociedad conyugal</li>
+                                            <li>✔️ Convenio de divorcio</li>
+                                            <li>✔️ Guarda y custodia de hijos</li>
+                                            <li>✔️ Pensión alimenticia y compensación</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Pérdida de Patria Potestad -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-user-slash"></i>
+                                        <h4>Pérdida de Patria Potestad</h4>
+                                        <p>Resolución efectiva de casos complejos.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Pérdida de Patria Potestad</h4>
+                                        <ul>
+                                            <li>✔️ Asesoría en casos de maltrato</li>
+                                            <li>✔️ Recolección de pruebas</li>
+                                            <li>✔️ Demanda de pérdida de patria potestad</li>
+                                            <li>✔️ Representación de los menores</li>
+                                            <li>✔️ Seguimiento judicial completo</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Guarda y Custodia -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>Guarda y Custodia</h4>
+                                        <p>Protección de los derechos de tus hijos.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Guarda y Custodia</h4>
+                                        <ul>
+                                            <li>✔️ Asesoría en custodia compartida</li>
+                                            <li>✔️ Régimen de visitas</li>
+                                            <li>✔️ Demanda de custodia</li>
+                                            <li>✔️ Modificación de custodias</li>
+                                            <li>✔️ Protección de derechos de los menores</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Juicios Sucesorios -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-invoice"></i>
+                                        <h4>Juicios Sucesorios</h4>
+                                        <p>Asistencia en testamentarios e intestamentarios.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Juicios Sucesorios</h4>
+                                        <ul>
+                                            <li>✔️ Testamentarios e intestamentarios</li>
+                                            <li>✔️ Inventario y avalúo de bienes</li>
+                                            <li>✔️ Repartición de herencia</li>
+                                            <li>✔️ Impugnación de testamentos</li>
+                                            <li>✔️ Asesoría en todo el proceso</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Juicios de Interdicción -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-balance-scale"></i>
+                                        <h4>Juicios de Interdicción</h4>
+                                        <p>Representación legal especializada.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Juicios de Interdicción</h4>
+                                        <ul>
+                                            <li>✔️ Asesoría en incapacidad legal</li>
+                                            <li>✔️ Demanda de interdicción</li>
+                                            <li>✔️ Designación de tutor</li>
+                                            <li>✔️ Administración de bienes</li>
+                                            <li>✔️ Protección de derechos del incapaz</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== PENAL ===== -->
+                    <div class="tab-panel" id="tab-penal">
+                        <div class="servicios-grid">
+                            <!-- 1. Robos, Hurtos y Apropiaciones -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-handcuffs"></i>
+                                        <h4>Robos, Hurtos y Apropiaciones</h4>
+                                        <p>Solución eficaz para delitos patrimoniales.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Robos, Hurtos y Apropiaciones</h4>
+                                        <ul>
+                                            <li>✔️ Defensa en delitos patrimoniales</li>
+                                            <li>✔️ Estrategia de defensa técnica</li>
+                                            <li>✔️ Negociación con la fiscalía</li>
+                                            <li>✔️ Reducción de penas</li>
+                                            <li>✔️ Protección de derechos del imputado</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Delitos de Alcoholemia -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-car"></i>
+                                        <h4>Delitos de Alcoholemia</h4>
+                                        <p>Asesoramiento especializado en conducción temeraria.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Delitos de Alcoholemia</h4>
+                                        <ul>
+                                            <li>✔️ Defensa en casos de alcoholemia</li>
+                                            <li>✔️ Impugnación de pruebas</li>
+                                            <li>✔️ Recursos legales ante multas</li>
+                                            <li>✔️ Reducción de sanciones</li>
+                                            <li>✔️ Recuperación de licencia</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Estafas y Fraudes -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                        <h4>Estafas y Fraudes</h4>
+                                        <p>Defensa contra falsedades y malversación.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Estafas y Fraudes</h4>
+                                        <ul>
+                                            <li>✔️ Defensa en delitos financieros</li>
+                                            <li>✔️ Análisis de evidencias</li>
+                                            <li>✔️ Estrategia de litigio</li>
+                                            <li>✔️ Protección de derechos del acusado</li>
+                                            <li>✔️ Recursos de apelación</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Delitos contra la Libertad -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-fist-raised"></i>
+                                        <h4>Delitos contra la Libertad</h4>
+                                        <p>Defensa aguerrida para proteger tus derechos.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Delitos contra la Libertad</h4>
+                                        <ul>
+                                            <li>✔️ Defensa en casos de secuestro</li>
+                                            <li>✔️ Protección de derechos humanos</li>
+                                            <li>✔️ Estrategia de litigio penal</li>
+                                            <li>✔️ Recursos constitucionales</li>
+                                            <li>✔️ Seguimiento judicial completo</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Violencia de Género -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-venus-mars"></i>
+                                        <h4>Violencia de Género</h4>
+                                        <p>Compromiso firme para erradicar la violencia.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Violencia de Género</h4>
+                                        <ul>
+                                            <li>✔️ Asesoría a víctimas de violencia</li>
+                                            <li>✔️ Medidas de protección</li>
+                                            <li>✔️ Denuncias y seguimiento</li>
+                                            <li>✔️ Representación legal</li>
+                                            <li>✔️ Acompañamiento psicológico legal</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Lesiones -->
+                            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fas fa-heartbeat"></i>
+                                        <h4>Lesiones</h4>
+                                        <p>Abordaje con seriedad y profesionalismo.</p>
+                                        <span class="flip-hint">👆 Toca para más info</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>🔹 Lesiones</h4>
+                                        <ul>
+                                            <li>✔️ Defensa en casos de lesiones</li>
+                                            <li>✔️ Negociación con la fiscalía</li>
+                                            <li>✔️ Reparación de daños</li>
+                                            <li>✔️ Protección de derechos del imputado</li>
+                                            <li>✔️ Seguimiento judicial</li>
+                                        </ul>
+                                        <a href="#contacto" class="btn-flip">Solicitar asesoría</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CASOS DE ÉXITO ====== -->
+    <section class="casos-exito" id="casos-exito">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Casos de Éxito</span>
+                <h2>Historias que <span class="highlight">respaldan</span> mi trabajo</h2>
+                <p>Artículos y prensa que reflejan los resultados de mi estrategia legal.</p>
+            </div>
+            <div class="casos-grid">
+                <div class="caso-card" data-tilt>
+                    <div class="caso-header">
+                        <div class="caso-avatar">KS</div>
+                        <div>
+                            <h4>Karla Sánchez</h4>
+                            <span class="caso-tag">Litigio Civil</span>
+                        </div>
+                    </div>
+                    <p>
+                        "Gracias a la dedicación y experiencia de la Abogada Rocío Ramos, logramos resolver 
+                        de manera exitosa un complejo litigio civil. Su profesionalismo fue fundamental. 
+                        <strong>¡Altamente recomendada!</strong>"
+                    </p>
+                    <div class="caso-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="caso-card" data-tilt>
+                    <div class="caso-header">
+                        <div class="caso-avatar">MG</div>
+                        <div>
+                            <h4>Miguel González</h4>
+                            <span class="caso-tag">Derecho Familiar</span>
+                        </div>
+                    </div>
+                    <p>
+                        "En un momento tan difícil como mi divorcio, la Abogada Ramos me brindó el apoyo 
+                        y la asesoría que necesitaba. Logramos un acuerdo justo que <strong>protegió a mis hijos</strong> 
+                        y mi patrimonio."
+                    </p>
+                    <div class="caso-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="caso-card" data-tilt>
+                    <div class="caso-header">
+                        <div class="caso-avatar">LR</div>
+                        <div>
+                            <h4>Laura Rodríguez</h4>
+                            <span class="caso-tag">Materia Penal</span>
+                        </div>
+                    </div>
+                    <p>
+                        "Me sentí acompañada y defendida en todo momento. La Abogada Rocío Ramos no solo 
+                        es una excelente profesional, sino que también demostró una <strong>gran empatía y compromiso</strong> 
+                        con mi caso."
+                    </p>
+                    <div class="caso-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACTO ====== -->
+    <section class="contacto-3d" id="contacto">
+        <div class="container contacto-3d-container">
+            <div class="contacto-3d-info">
+                <span class="section-tag">¿Necesitas agendar una consulta?</span>
+                <h2>Maximiza tus <span class="highlight">soluciones legales</span></h2>
+                <p>
+                    Comparte tus desafíos y déjame guiar tu camino hacia una asesoría legal efectiva. 
+                    Ya sea en una consultoría presencial para una atención más personalizada o en línea 
+                    para mayor comodidad, <strong>estoy aquí para ofrecerte el respaldo que necesitas.</strong>
+                </p>
+                <div class="contacto-3d-details">
+                    <div class="contacto-3d-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span>Teléfono</span>
+                            <a href="tel:+6645638126">664 563 8126</a>
+                        </div>
+                    </div>
+                    <div class="contacto-3d-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span>Email</span>
+                            <a href="mailto:contacto@abogadarocioramos.com">contacto@abogadarocioramos.com</a>
+                        </div>
+                    </div>
+                    <div class="contacto-3d-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Dirección</span>
+                            <p>Calle Fernando Sánchez #153, Col. Castillo, Tijuana</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacto-3d-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="contacto-3d-form-wrapper">
+                <form id="contactForm" class="contacto-3d-form">
+                    <div class="form-group-3d">
+                        <label>Nombre y apellido *</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre completo" required />
+                    </div>
+                    <div class="form-group-3d">
+                        <label>Teléfono *</label>
+                        <input type="tel" id="telefono" placeholder="Tu número de teléfono" required />
+                    </div>
+                    <div class="form-group-3d">
+                        <label>Email *</label>
+                        <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
+                    </div>
+                    <div class="form-group-3d">
+                        <label>Modalidad de la consulta</label>
+                        <select id="modalidad">
+                            <option value="">— Escoger una opción —</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="en-linea">En línea</option>
+                        </select>
+                    </div>
+                    <div class="form-group-3d">
+                        <label>Motivo de la consulta</label>
+                        <select id="motivo">
+                            <option value="">— Escoger una opción —</option>
+                            <option value="civil">Materia Civil</option>
+                            <option value="familiar">Materia Familiar</option>
+                            <option value="penal">Materia Penal</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group-3d">
+                        <label>Mensaje (opcional)</label>
+                        <textarea id="mensaje" rows="3" placeholder="Cuéntame más sobre tu caso..."></textarea>
+                    </div>
+                    <div class="form-group-3d form-captcha">
+                        <label>Resultado de: 5 + 4 = ?</label>
+                        <input type="text" id="captcha" placeholder="Escribe el resultado" required />
+                    </div>
+                    <div class="form-group-3d form-check">
+                        <input type="checkbox" id="terminos" required />
+                        <label for="terminos">Acepto los Términos y condiciones</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer-3d">
+        <div class="container footer-3d-container">
+            <div class="footer-3d-brand">
+                <div class="logo-3d footer-logo-3d">
+                    <span class="logo-letter-3d">RR</span>
+                    <div class="logo-text-3d">
+                        <span class="logo-despacho-3d">DESPACHO JURÍDICO</span>
+                        <span class="logo-abogada-3d">ABOGADA</span>
+                    </div>
+                </div>
+                <p>Protegiendo tus derechos y defendiendo tus intereses con profesionalismo. Tu abogada de confianza en cada paso legal.</p>
+            </div>
+            <div class="footer-3d-links">
+                <h4>Enlaces rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#casos-exito">Casos de Éxito</a></li>
+                </ul>
+            </div>
+            <div class="footer-3d-links">
+                <h4>Áreas de práctica</h4>
+                <ul>
+                    <li><a href="#servicios">Derecho Civil</a></li>
+                    <li><a href="#servicios">Derecho Familiar</a></li>
+                    <li><a href="#servicios">Derecho Penal</a></li>
+                </ul>
+            </div>
+            <div class="footer-3d-newsletter">
+                <h4>¿Hablamos?</h4>
+                <p>Agenda tu consulta y obtén la asesoría que necesitas.</p>
+                <a href="#contacto" class="btn btn-primary btn-sm">Agendar consulta</a>
+            </div>
+        </div>
+        <div class="footer-3d-bottom">
+            <div class="container">
+                <p>&copy; 2026 Abogada Rocío Ramos · Despacho Jurídico · Todos los derechos reservados</p>
+                <p class="footer-legal">
+                    <a href="#">Políticas de privacidad</a> | <a href="#">Términos y condiciones</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== WHATSAPP FLOTANTE ====== -->
+    <a href="https://wa.me/526645638126?text=Hola%20Abogada%20Rocío%2C%20me%20gustaría%20agendar%20una%20consulta." 
+       class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ====== SCRIPTS ====== -->
+    <script src="script.js"></script>
+</body>
+</html>
