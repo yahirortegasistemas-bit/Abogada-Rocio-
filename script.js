@@ -681,43 +681,85 @@ window.addEventListener('scroll', () => {
 });
 
 // ======================================================
-// EFECTO MÁQUINA DE ESCRIBIR
+// MÁQUINA DE ESCRIBIR - VERSIÓN MEJORADA (MÓVIL + ESCRITORIO)
 // ======================================================
 document.addEventListener('DOMContentLoaded', function() {
-    const typewriterElement = document.querySelector('.typewriter');
-    if (!typewriterElement) return;
-    
-    const words = JSON.parse(typewriterElement.getAttribute('data-words'));
-    let wordIndex = 0;
+    const textElement = document.getElementById('typewriter-text');
+    if (!textElement) return;
+
+    // ===== FRASES QUE SE VAN A ESCRIBIR =====
+    const phrases = [
+        'Protegiendo tus derechos',
+        'y defendiendo tus intereses',
+        'con <span class="highlight">profesionalismo</span>'
+    ];
+
+    let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let currentText = '';
-    
-    function type() {
-        const currentWord = words[wordIndex];
+    let typingSpeed = 80;
+    let deletingSpeed = 40;
+    let pauseTime = 2000;
+
+    // ===== DETECTAR MÓVIL PARA AJUSTAR VELOCIDAD =====
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        typingSpeed = 100;
+        deletingSpeed = 50;
+        pauseTime = 2500;
+    }
+
+    function typeWriter() {
+        const currentPhrase = phrases[phraseIndex];
         
         if (isDeleting) {
-            currentText = currentWord.substring(0, charIndex - 1);
+            // Borrando
+            currentText = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
         } else {
-            currentText = currentWord.substring(0, charIndex + 1);
+            // Escribiendo
+            currentText = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
         }
-        
-        typewriterElement.innerHTML = currentText + '<span class="cursor"></span>';
-        
-        if (!isDeleting && charIndex === currentWord.length) {
+
+        // Actualizar el HTML (permite etiquetas como <span>)
+        textElement.innerHTML = currentText;
+
+        // Determinar la siguiente acción
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // Terminó de escribir - pausa antes de borrar
             isDeleting = true;
-            setTimeout(type, 2000);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(type, 500);
-        } else {
-            const speed = isDeleting ? 50 : 100;
-            setTimeout(type, speed);
+            setTimeout(typeWriter, pauseTime);
+            return;
         }
+
+        if (isDeleting && charIndex === 0) {
+            // Terminó de borrar - pasa a la siguiente frase
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeWriter, 300);
+            return;
+        }
+
+        // Velocidad de escritura/borrado
+        const speed = isDeleting ? deletingSpeed : typingSpeed;
+        setTimeout(typeWriter, speed);
     }
-    
-    type();
+
+    // ===== INICIAR DESPUÉS DE UN PEQUEÑO RETRASO =====
+    setTimeout(typeWriter, 500);
+
+    // ===== REINICIAR EN MÓVIL SI CAMBIA DE TAMAÑO =====
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            const newIsMobile = window.innerWidth <= 768;
+            if (newIsMobile !== isMobile) {
+                // Recargar la animación si cambia el tamaño
+                location.reload();
+            }
+        }, 500);
+    });
 });
