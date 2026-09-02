@@ -1551,3 +1551,41 @@ ul {
         padding: 8px 16px;
     }
 }
+
+/* ======================================================
+   EFECTO MÁQUINA DE ESCRIBIR
+   ====================================================== */
+.typewriter {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-white);
+    min-height: 180px;
+}
+
+.typewriter .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 4.2rem;
+    background: var(--color-secondary);
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .typewriter {
+        font-size: 2.4rem;
+        min-height: 120px;
+    }
+    .typewriter .cursor {
+        height: 2.4rem;
+    }
+}

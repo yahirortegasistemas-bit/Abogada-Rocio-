@@ -679,3 +679,45 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// ======================================================
+// EFECTO MÁQUINA DE ESCRIBIR
+// ======================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const typewriterElement = document.querySelector('.typewriter');
+    if (!typewriterElement) return;
+    
+    const words = JSON.parse(typewriterElement.getAttribute('data-words'));
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let currentText = '';
+    
+    function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            currentText = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            currentText = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        typewriterElement.innerHTML = currentText + '<span class="cursor"></span>';
+        
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500);
+        } else {
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+});
