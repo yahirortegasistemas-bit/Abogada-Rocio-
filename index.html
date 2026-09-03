@@ -14,11 +14,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
     
-    <!-- ===== THREE.JS ===== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- ===== THREE.JS (carga diferida) ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     
     <!-- ===== FONT AWESOME ===== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
 
@@ -63,54 +63,42 @@
         </div>
     </header>
 
-  <!-- ====== HERO 3D ====== -->
-<section class="hero-3d" id="inicio">
-    <div id="three-container"></div>
-    <div class="hero-overlay-3d"></div>
-    
-    <div class="hero-content-3d">
-        <div class="hero-badge-3d">Abogada Rocío Ramos</div>
+    <!-- ====== HERO 3D (ÚNICO) ====== -->
+    <section class="hero-3d" id="inicio">
+        <div id="three-container"></div>
+        <div class="hero-overlay-3d"></div>
         
-        <h1 class="typewriter-title">
-            <span id="typewriter-text"></span>
-            <span class="cursor-blink">|</span>
-        </h1>
-        
-        <p class="hero-desc-3d">
-            <strong>Tu abogada de confianza en cada paso legal.</strong><br />
-            <span class="highlight">Litigio Civil · Asuntos Familiares · Materia Penal</span>
-        </p>
-        <div class="hero-buttons-3d">
-            <a href="#contacto" class="btn btn-primary btn-3d">Agenda tu Consulta</a>
-            <a href="#servicios" class="btn btn-outline-3d">Conoce mis servicios</a>
+        <div class="hero-content-3d">
+            <div class="hero-badge-3d">Abogada Rocío Ramos</div>
+            
+            <h1 class="typewriter-title">
+                <span id="typewriter-text"></span>
+                <span class="cursor-blink">|</span>
+            </h1>
+            
+            <p class="hero-desc-3d">
+                <strong>Tu abogada de confianza en cada paso legal.</strong><br />
+                <span class="highlight">Litigio Civil · Asuntos Familiares · Materia Penal</span>
+            </p>
+            <div class="hero-buttons-3d">
+                <a href="#contacto" class="btn btn-primary btn-3d">Agenda tu Consulta</a>
+                <a href="#servicios" class="btn btn-outline-3d">Conoce mis servicios</a>
+            </div>
+            <div class="hero-stats-3d">
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="1800">0</span>
+                    <span class="stat-label">Clientes de confianza</span>
+                </div>
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="95">0</span>
+                    <span class="stat-label">% Casos de éxito</span>
+                </div>
+                <div class="stat-item-3d">
+                    <span class="stat-number" data-count="2620">0</span>
+                    <span class="stat-label">Casos registrados</span>
+                </div>
+            </div>
         </div>
-        <div class="hero-stats-3d">
-            <div class="stat-item-3d">
-                <span class="stat-number" data-count="1800">0</span>
-                <span class="stat-label">Clientes de confianza</span>
-            </div>
-            <div class="stat-item-3d">
-                <span class="stat-number" data-count="95">0</span>
-                <span class="stat-label">% Casos de éxito</span>
-            </div>
-            <div class="stat-item-3d">
-                <span class="stat-number" data-count="2620">0</span>
-                <span class="stat-label">Casos registrados</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="scroll-indicator">
-        <span>Descubre más</span>
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</section>
-    
-    <div class="scroll-indicator">
-        <span>Descubre más</span>
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</section>
         
         <div class="scroll-indicator">
             <span>Descubre más</span>
@@ -123,7 +111,7 @@
         <div class="container sobre-mi-container">
             <div class="sobre-mi-image">
                 <div class="sobre-mi-image-wrapper">
-                    <img src="img2.jpeg" alt="Abogada Rocío Ramos" />
+                    <img src="img2.jpeg" alt="Abogada Rocío Ramos" loading="lazy" />
                     <div class="sobre-mi-badge">
                         <i class="fas fa-award"></i>
                         <span>+10 años de experiencia</span>
@@ -187,12 +175,9 @@
                 </div>
                 <div class="tabs-content">
 
-                    <!-- ========================================================= -->
-                    <!-- ===== CIVIL ============================================= -->
-                    <!-- ========================================================= -->
+                    <!-- ===== CIVIL ===== -->
                     <div class="tab-panel active" id="tab-civil">
                         <div class="servicios-grid">
-                            <!-- 1. Regularización de Propiedad -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -214,8 +199,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 2. Prescripción Adquisitiva -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -237,8 +220,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 3. Incumplimiento de Contratos -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -260,8 +241,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 4. Escrituras Públicas -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -283,8 +262,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 5. Desacuerdos entre Copropietarios -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -306,8 +283,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 6. Recuperación de Cartera -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -332,12 +307,9 @@
                         </div>
                     </div>
 
-                    <!-- ========================================================= -->
-                    <!-- ===== FAMILIAR ========================================== -->
-                    <!-- ========================================================= -->
+                    <!-- ===== FAMILIAR ===== -->
                     <div class="tab-panel" id="tab-familiar">
                         <div class="servicios-grid">
-                            <!-- 1. Pensión Alimenticia -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -359,8 +331,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 2. Gestión de Divorcios -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -382,8 +352,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 3. Pérdida de Patria Potestad -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -405,8 +373,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 4. Guarda y Custodia -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -428,8 +394,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 5. Juicios Sucesorios -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -451,8 +415,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 6. Juicios de Interdicción -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -477,12 +439,9 @@
                         </div>
                     </div>
 
-                    <!-- ========================================================= -->
-                    <!-- ===== PENAL ============================================= -->
-                    <!-- ========================================================= -->
+                    <!-- ===== PENAL ===== -->
                     <div class="tab-panel" id="tab-penal">
                         <div class="servicios-grid">
-                            <!-- 1. Robos, Hurtos y Apropiaciones -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -504,8 +463,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 2. Delitos de Alcoholemia -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -527,8 +484,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 3. Estafas y Fraudes -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -550,8 +505,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 4. Delitos contra la Libertad -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -573,8 +526,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 5. Violencia de Género -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -596,8 +547,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 6. Lesiones -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
@@ -739,22 +688,22 @@
                 </div>
             </div>
             <div class="contacto-3d-form-wrapper">
-                <form id="contactForm" class="contacto-3d-form">
+                <form id="contactForm" class="contacto-3d-form" action="https://formspree.io/f/tu-id-aqui" method="POST">
                     <div class="form-group-3d">
                         <label>Nombre y apellido *</label>
-                        <input type="text" id="nombre" placeholder="Tu nombre completo" required />
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
                     </div>
                     <div class="form-group-3d">
                         <label>Teléfono *</label>
-                        <input type="tel" id="telefono" placeholder="Tu número de teléfono" required />
+                        <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono" required />
                     </div>
                     <div class="form-group-3d">
                         <label>Email *</label>
-                        <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
                     </div>
                     <div class="form-group-3d">
                         <label>Modalidad de la consulta</label>
-                        <select id="modalidad">
+                        <select id="modalidad" name="modalidad">
                             <option value="">— Escoger una opción —</option>
                             <option value="presencial">Presencial</option>
                             <option value="en-linea">En línea</option>
@@ -762,7 +711,7 @@
                     </div>
                     <div class="form-group-3d">
                         <label>Motivo de la consulta</label>
-                        <select id="motivo">
+                        <select id="motivo" name="motivo">
                             <option value="">— Escoger una opción —</option>
                             <option value="civil">Materia Civil</option>
                             <option value="familiar">Materia Familiar</option>
@@ -772,14 +721,14 @@
                     </div>
                     <div class="form-group-3d">
                         <label>Mensaje (opcional)</label>
-                        <textarea id="mensaje" rows="3" placeholder="Cuéntame más sobre tu caso..."></textarea>
+                        <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntame más sobre tu caso..."></textarea>
                     </div>
                     <div class="form-group-3d form-captcha">
                         <label>Resultado de: 5 + 4 = ?</label>
-                        <input type="text" id="captcha" placeholder="Escribe el resultado" required />
+                        <input type="text" id="captcha" name="captcha" placeholder="Escribe el resultado" required />
                     </div>
                     <div class="form-group-3d form-check">
-                        <input type="checkbox" id="terminos" required />
+                        <input type="checkbox" id="terminos" name="terminos" required />
                         <label for="terminos">Acepto los Términos y condiciones</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>

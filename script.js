@@ -3,11 +3,9 @@
 // ======================================================
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-        }, 1200);
-    }
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 1200);
 });
 
 // ======================================================
@@ -16,15 +14,9 @@ window.addEventListener('load', () => {
 let threeInitialized = false;
 let scene, camera, renderer;
 let mainGroup, particles, glowParticles;
-let balanzaArm, plateLeft, plateRight;
 let mouseX = 0, mouseY = 0;
 let targetRotationX = 0, targetRotationY = 0;
 let autoRotate = true;
-
-// Estado de la animación de "equilibrio" de la balanza al cargar
-let balanceStartTime = null;
-const BALANCE_DURATION = 2600; // ms
-const BALANCE_START_TILT = 0.22; // radianes, desequilibrio inicial
 
 function initThreeWhenReady() {
     if (typeof THREE !== 'undefined' && !threeInitialized) {
@@ -37,10 +29,7 @@ function initThreeWhenReady() {
 }
 
 // ======================================================
-// THREE.JS - TEMPLO DE JUSTICIA 3D (VERSIÓN OPTIMIZADA)
-// La balanza es el elemento protagonista: entra desequilibrada
-// y se nivela suavemente, simbolizando que la justicia se restaura.
-// Las columnas quedan como marco discreto, no como protagonistas.
+// THREE.JS - TEMPLO DE JUSTICIA 3D (PREMIUM)
 // ======================================================
 function initThree() {
     const container = document.getElementById('three-container');
@@ -49,8 +38,8 @@ function initThree() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(0, 3.2, 16);
-    camera.lookAt(0, 2.0, 0);
+    camera.position.set(0, 3.5, 18);
+    camera.lookAt(0, 1.8, 0);
 
     renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -60,10 +49,8 @@ function initThree() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0);
-
-    // En pantallas pequeñas, reducimos aún más la carga
-    const isMobile = container.clientWidth < 768;
-
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     container.appendChild(renderer.domElement);
 
     mainGroup = new THREE.Group();
@@ -73,41 +60,39 @@ function initThree() {
     const goldLine = new THREE.LineBasicMaterial({
         color: 0xc9a84c,
         transparent: true,
-        opacity: 0.10,
+        opacity: 0.12,
     });
 
     const goldLineStrong = new THREE.LineBasicMaterial({
         color: 0xe8d5a3,
         transparent: true,
-        opacity: 0.55,
+        opacity: 0.5,
     });
 
     const goldLineLight = new THREE.LineBasicMaterial({
         color: 0xc9a84c,
         transparent: true,
-        opacity: 0.05,
+        opacity: 0.06,
     });
 
     const goldLineMedium = new THREE.LineBasicMaterial({
         color: 0xc9a84c,
         transparent: true,
-        opacity: 0.20,
+        opacity: 0.25,
     });
 
     const goldLineGlow = new THREE.LineBasicMaterial({
         color: 0xffdd88,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.6,
     });
 
-    // ======================================================
-    // ===== 1. COLUMNAS DEL TEMPLO (reducidas a 6, marco discreto) =====
-    // ======================================================
+    // ===== 1. COLUMNAS DEL TEMPLO (8 columnas) =====
     const columnPositions = [];
-    const numColumns = 6;
+    const numColumns = 8;
     for (let i = 0; i < numColumns; i++) {
         const angle = (i / numColumns) * Math.PI * 2;
-        const radius = 5.4;
+        const radius = 4.8;
         columnPositions.push({
             x: radius * Math.cos(angle),
             z: radius * Math.sin(angle)
@@ -125,14 +110,13 @@ function initThree() {
             new THREE.Vector3(0, height, 0)
         ];
         const geo = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.Line(geo, index % 2 === 0 ? goldLine : goldLineLight);
+        const line = new THREE.Line(geo, index % 2 === 0 ? goldLineStrong : goldLine);
         colGroup.add(line);
 
-        // Base de la columna
         const basePoints = [];
-        const baseRadius = 0.14;
-        for (let j = 0; j <= 12; j++) {
-            const theta = (j / 12) * Math.PI * 2;
+        const baseRadius = 0.15;
+        for (let j = 0; j <= 14; j++) {
+            const theta = (j / 14) * Math.PI * 2;
             basePoints.push(new THREE.Vector3(
                 baseRadius * Math.cos(theta),
                 0.05,
@@ -140,13 +124,13 @@ function initThree() {
             ));
         }
         const baseGeo = new THREE.BufferGeometry().setFromPoints(basePoints);
-        colGroup.add(new THREE.Line(baseGeo, goldLineLight));
+        const baseLine = new THREE.Line(baseGeo, goldLineLight);
+        colGroup.add(baseLine);
 
-        // Capitel
         const capitelPoints = [];
-        const capitelRadius = 0.22;
-        for (let j = 0; j <= 12; j++) {
-            const theta = (j / 12) * Math.PI * 2;
+        const capitelRadius = 0.25;
+        for (let j = 0; j <= 14; j++) {
+            const theta = (j / 14) * Math.PI * 2;
             capitelPoints.push(new THREE.Vector3(
                 capitelRadius * Math.cos(theta),
                 height,
@@ -154,19 +138,45 @@ function initThree() {
             ));
         }
         const capitelGeo = new THREE.BufferGeometry().setFromPoints(capitelPoints);
-        colGroup.add(new THREE.Line(capitelGeo, goldLineMedium));
+        const capitelLine = new THREE.Line(capitelGeo, goldLineMedium);
+        colGroup.add(capitelLine);
+
+        const ringPoints = [];
+        for (let j = 0; j <= 14; j++) {
+            const theta = (j / 14) * Math.PI * 2;
+            const r = 0.12;
+            ringPoints.push(new THREE.Vector3(
+                r * Math.cos(theta),
+                height * 0.5,
+                r * Math.sin(theta)
+            ));
+        }
+        const ringGeo = new THREE.BufferGeometry().setFromPoints(ringPoints);
+        const ringLine = new THREE.Line(ringGeo, goldLineLight);
+        colGroup.add(ringLine);
+
+        const ringPoints2 = [];
+        for (let j = 0; j <= 14; j++) {
+            const theta = (j / 14) * Math.PI * 2;
+            const r = 0.12;
+            ringPoints2.push(new THREE.Vector3(
+                r * Math.cos(theta),
+                height * 0.2,
+                r * Math.sin(theta)
+            ));
+        }
+        const ringGeo2 = new THREE.BufferGeometry().setFromPoints(ringPoints2);
+        const ringLine2 = new THREE.Line(ringGeo2, goldLineLight);
+        colGroup.add(ringLine2);
     });
 
-    // ======================================================
-    // ===== 2. TECHO (anillos superiores, sutiles) =====
-    // ======================================================
-    const roofRings = isMobile ? 3 : 5;
-    for (let i = 0; i < roofRings; i++) {
-        const radius = 2.8 + i * 0.7;
+    // ===== 2. TECHO (anillos superiores) =====
+    for (let i = 0; i < 6; i++) {
+        const radius = 2.5 + i * 0.7;
         const y = 4.7 + i * 0.04;
         const points = [];
-        for (let j = 0; j <= 44; j++) {
-            const theta = (j / 44) * Math.PI * 2;
+        for (let j = 0; j <= 50; j++) {
+            const theta = (j / 50) * Math.PI * 2;
             const wave = Math.sin(theta * 4 + i) * 0.04;
             points.push(new THREE.Vector3(
                 (radius + wave) * Math.cos(theta),
@@ -175,114 +185,106 @@ function initThree() {
             ));
         }
         const geo = new THREE.BufferGeometry().setFromPoints(points);
-        mainGroup.add(new THREE.Line(geo, i % 2 === 0 ? goldLineMedium : goldLineLight));
+        const line = new THREE.Line(geo, i % 2 === 0 ? goldLineMedium : goldLineLight);
+        mainGroup.add(line);
     }
 
-    // ======================================================
-    // ===== 3. BALANZA CENTRAL — ELEMENTO PROTAGONISTA =====
-    // Se agrupa el brazo + platos en balanzaArm para poder
-    // animar su inclinación (efecto de "equilibrio restaurado").
-    // ======================================================
-    balanzaArm = new THREE.Group();
-    balanzaArm.position.set(0, 3.0, 0); // pivote del brazo
-    mainGroup.add(balanzaArm);
-
-    // Brazo principal (ahora más grueso visualmente con doble línea)
+    // ===== 3. BALANZA CENTRAL (detallada) =====
     const armPoints1 = [
-        new THREE.Vector3(-2.7, 0, 0),
-        new THREE.Vector3(2.7, 0, 0)
+        new THREE.Vector3(-2.5, 3.0, 0),
+        new THREE.Vector3(2.5, 3.0, 0)
     ];
     const armGeo1 = new THREE.BufferGeometry().setFromPoints(armPoints1);
-    balanzaArm.add(new THREE.Line(armGeo1, goldLineStrong));
+    const armLine1 = new THREE.Line(armGeo1, goldLineStrong);
+    mainGroup.add(armLine1);
 
     const armPoints2 = [
-        new THREE.Vector3(-2.7, 0.05, 0.04),
-        new THREE.Vector3(2.7, 0.05, 0.04)
+        new THREE.Vector3(-2.5, 3.05, 0.04),
+        new THREE.Vector3(2.5, 3.05, 0.04)
     ];
     const armGeo2 = new THREE.BufferGeometry().setFromPoints(armPoints2);
-    balanzaArm.add(new THREE.Line(armGeo2, goldLineLight));
+    const armLine2 = new THREE.Line(armGeo2, goldLineLight);
+    mainGroup.add(armLine2);
 
-    // Orbe central del brazo (punto de apoyo brillante)
-    const orbPoints = [];
-    for (let j = 0; j <= 20; j++) {
-        const theta = (j / 20) * Math.PI * 2;
-        orbPoints.push(new THREE.Vector3(0.12 * Math.cos(theta), 0.12 * Math.sin(theta), 0));
-    }
-    const orbGeo = new THREE.BufferGeometry().setFromPoints(orbPoints);
-    balanzaArm.add(new THREE.Line(orbGeo, goldLineGlow));
-
-    // Columna central (fija, no rota con el brazo)
     const pillarPoints = [
         new THREE.Vector3(0, 0.5, 0),
         new THREE.Vector3(0, 3.0, 0)
     ];
     const pillarGeo = new THREE.BufferGeometry().setFromPoints(pillarPoints);
-    mainGroup.add(new THREE.Line(pillarGeo, goldLineStrong));
+    const pillarLine = new THREE.Line(pillarGeo, goldLineStrong);
+    mainGroup.add(pillarLine);
 
-    // Base de la balanza (fija)
-    const basePoints = [
-        new THREE.Vector3(-0.45, 0.5, 0),
-        new THREE.Vector3(0.45, 0.5, 0),
+    const basePoints2 = [
+        new THREE.Vector3(-0.4, 0.5, 0),
+        new THREE.Vector3(0.4, 0.5, 0),
         new THREE.Vector3(0, 0.1, 0),
-        new THREE.Vector3(-0.45, 0.5, 0)
+        new THREE.Vector3(-0.4, 0.5, 0)
     ];
-    const baseGeo = new THREE.BufferGeometry().setFromPoints(basePoints);
-    mainGroup.add(new THREE.Line(baseGeo, goldLineMedium));
+    const baseGeo2 = new THREE.BufferGeometry().setFromPoints(basePoints2);
+    const baseLine2 = new THREE.Line(baseGeo2, goldLineMedium);
+    mainGroup.add(baseLine2);
 
-    // Platos — cuelgan del brazo, se añaden a balanzaArm para heredar la inclinación
-    plateLeft = new THREE.Group();
-    plateLeft.position.set(-2.7, 0, 0);
-    balanzaArm.add(plateLeft);
+    const orbPoints = [];
+    for (let j = 0; j <= 16; j++) {
+        const theta = (j / 16) * Math.PI * 2;
+        const r = 0.1;
+        orbPoints.push(new THREE.Vector3(
+            r * Math.cos(theta),
+            3.15,
+            r * Math.sin(theta)
+        ));
+    }
+    const orbGeo = new THREE.BufferGeometry().setFromPoints(orbPoints);
+    const orbLine = new THREE.Line(orbGeo, goldLineGlow);
+    mainGroup.add(orbLine);
 
-    plateRight = new THREE.Group();
-    plateRight.position.set(2.7, 0, 0);
-    balanzaArm.add(plateRight);
-
-    [plateLeft, plateRight].forEach((plateGroup) => {
-        // Cadenas
+    for (let side = -1; side <= 1; side += 2) {
+        const x = side * 2.5;
         for (let i = -1; i <= 1; i += 1) {
             const chainPoints = [
-                new THREE.Vector3(i * 0.28, 0, 0),
-                new THREE.Vector3(i * 0.28, -1.2, 0)
+                new THREE.Vector3(x + i * 0.25, 3.0, 0),
+                new THREE.Vector3(x + i * 0.25, 1.8, 0)
             ];
             const chainGeo = new THREE.BufferGeometry().setFromPoints(chainPoints);
-            plateGroup.add(new THREE.Line(chainGeo, goldLineLight));
+            const chainLine = new THREE.Line(chainGeo, goldLineLight);
+            mainGroup.add(chainLine);
         }
-
-        // Plato exterior
         const platePoints = [];
         for (let j = 0; j <= 24; j++) {
             const theta = (j / 24) * Math.PI * 2;
-            const r = 0.55 + Math.sin(theta * 4) * 0.04;
-            platePoints.push(new THREE.Vector3(r * Math.cos(theta), -1.2, r * Math.sin(theta)));
+            const r = 0.5 + Math.sin(theta * 4) * 0.04;
+            platePoints.push(new THREE.Vector3(
+                x + r * Math.cos(theta),
+                1.8,
+                r * Math.sin(theta)
+            ));
         }
         const plateGeo = new THREE.BufferGeometry().setFromPoints(platePoints);
-        plateGroup.add(new THREE.Line(plateGeo, goldLineStrong));
+        const plateLine = new THREE.Line(plateGeo, goldLineStrong);
+        mainGroup.add(plateLine);
 
-        // Plato interior
         const innerPoints = [];
         for (let j = 0; j <= 16; j++) {
             const theta = (j / 16) * Math.PI * 2;
-            const r = 0.28;
-            innerPoints.push(new THREE.Vector3(r * Math.cos(theta), -1.18, r * Math.sin(theta)));
+            const r = 0.25;
+            innerPoints.push(new THREE.Vector3(
+                x + r * Math.cos(theta),
+                1.82,
+                r * Math.sin(theta)
+            ));
         }
         const innerGeo = new THREE.BufferGeometry().setFromPoints(innerPoints);
-        plateGroup.add(new THREE.Line(innerGeo, goldLineLight));
-    });
+        const innerLine = new THREE.Line(innerGeo, goldLineLight);
+        mainGroup.add(innerLine);
+    }
 
-    // Arranca inclinada — se nivelará en la animación de entrada
-    balanzaArm.rotation.z = BALANCE_START_TILT;
-
-    // ======================================================
-    // ===== 4. ANILLOS CONCÉNTRICOS EN EL SUELO (discretos) =====
-    // ======================================================
-    const floorRings = isMobile ? 4 : 6;
-    for (let i = 0; i < floorRings; i++) {
-        const radius = 1.4 + i * 0.6;
+    // ===== 4. ANILLOS CONCÉNTRICOS (en el suelo) =====
+    for (let i = 0; i < 8; i++) {
+        const radius = 1.2 + i * 0.6;
         const y = 0.1 + Math.sin(i * 0.5) * 0.02;
         const points = [];
-        for (let j = 0; j <= 44; j++) {
-            const theta = (j / 44) * Math.PI * 2;
+        for (let j = 0; j <= 50; j++) {
+            const theta = (j / 50) * Math.PI * 2;
             const wave = Math.sin(theta * 3 + i * 0.5) * 0.03;
             points.push(new THREE.Vector3(
                 (radius + wave) * Math.cos(theta),
@@ -291,13 +293,29 @@ function initThree() {
             ));
         }
         const geo = new THREE.BufferGeometry().setFromPoints(points);
-        mainGroup.add(new THREE.Line(geo, i % 2 === 0 ? goldLineMedium : goldLineLight));
+        const line = new THREE.Line(geo, i % 2 === 0 ? goldLineMedium : goldLineLight);
+        mainGroup.add(line);
     }
 
-    // ======================================================
-    // ===== 5. PARTÍCULAS DORADAS (reducidas para rendimiento) =====
-    // ======================================================
-    const particleCount = isMobile ? 500 : 1000;
+    // ===== 5. LÍNEAS RADIALES =====
+    for (let i = 0; i < 24; i++) {
+        const angle = (i / 24) * Math.PI * 2;
+        const radius = 5.0;
+        const points = [
+            new THREE.Vector3(0, 0.1, 0),
+            new THREE.Vector3(
+                radius * Math.cos(angle),
+                0.1 + Math.sin(angle * 2) * 0.15,
+                radius * Math.sin(angle)
+            )
+        ];
+        const geo = new THREE.BufferGeometry().setFromPoints(points);
+        const line = new THREE.Line(geo, goldLineLight);
+        mainGroup.add(line);
+    }
+
+    // ===== 6. PARTÍCULAS DORADAS =====
+    const particleCount = 2000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -330,8 +348,8 @@ function initThree() {
     particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
-    // ===== Partículas de brillo (reducidas) =====
-    const glowCount = isMobile ? 120 : 250;
+    // ===== 7. PARTÍCULAS DE BRILLO =====
+    const glowCount = 500;
     const glowPositions = new Float32Array(glowCount * 3);
 
     for (let i = 0; i < glowCount; i++) {
@@ -357,31 +375,33 @@ function initThree() {
     glowParticles = new THREE.Points(glowGeometry, glowMaterial);
     scene.add(glowParticles);
 
-    // ======================================================
-    // ===== 6. ILUMINACIÓN (sin sombras, más liviano) =====
-    // ======================================================
-    const ambientLight = new THREE.AmbientLight(0x404060, 0.45);
+    // ===== 8. ILUMINACIÓN =====
+    const ambientLight = new THREE.AmbientLight(0x404060, 0.4);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight(0xffeedd, 1.1);
+    const mainLight = new THREE.DirectionalLight(0xffeedd, 1.2);
     mainLight.position.set(5, 12, 10);
+    mainLight.castShadow = true;
     scene.add(mainLight);
 
-    const fillLight = new THREE.DirectionalLight(0x4488ff, 0.22);
+    const fillLight = new THREE.DirectionalLight(0x4488ff, 0.25);
     fillLight.position.set(-6, 3, -6);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xc9a84c, 0.45);
+    const rimLight = new THREE.DirectionalLight(0xc9a84c, 0.4);
     rimLight.position.set(-5, 8, -8);
     scene.add(rimLight);
 
-    // ======================================================
-    // ===== 7. EVENTOS =====
-    // ======================================================
+    const spotLight = new THREE.SpotLight(0xc9a84c, 0.3, 25, Math.PI / 6, 0.5, 1);
+    spotLight.position.set(0, 10, 0);
+    spotLight.target.position.set(0, 0, 0);
+    scene.add(spotLight);
+    scene.add(spotLight.target);
+
+    // ===== 9. EVENTOS =====
     window.addEventListener('resize', onResize);
     document.addEventListener('mousemove', onMouseMove);
 
-    balanceStartTime = performance.now();
     animate();
 }
 
@@ -410,11 +430,6 @@ function onResize() {
     renderer.setSize(width, height);
 }
 
-// Easing suave para el efecto de equilibrio (easeOutCubic)
-function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-}
-
 // ======================================================
 // ANIMATE - Loop de animación
 // ======================================================
@@ -433,23 +448,6 @@ function animate() {
         glowParticles.rotation.x = Math.sin(time * 0.03 + 1) * 0.01;
     }
 
-    // Animación de entrada: la balanza pasa de desequilibrada a nivelada,
-    // y luego queda con un balanceo sutil permanente (símbolo de justicia viva, no estática)
-    if (balanzaArm) {
-        if (balanceStartTime !== null) {
-            const elapsed = performance.now() - balanceStartTime;
-            const t = Math.min(elapsed / BALANCE_DURATION, 1);
-            const eased = easeOutCubic(t);
-            const settleWobble = Math.sin(time * 1.4) * 0.008 * (1 - eased * 0.7);
-            balanzaArm.rotation.z = BALANCE_START_TILT * (1 - eased) + settleWobble;
-            if (t >= 1) {
-                balanceStartTime = null; // pasa al balanceo permanente sutil de abajo
-            }
-        } else {
-            balanzaArm.rotation.z = Math.sin(time * 0.4) * 0.012;
-        }
-    }
-
     if (mainGroup) {
         if (autoRotate) {
             mainGroup.rotation.y += 0.0035;
@@ -459,6 +457,7 @@ function animate() {
             mainGroup.rotation.x += (targetRotationY * 0.3 - mainGroup.rotation.x) * 0.02;
         }
 
+        mainGroup.rotation.z = Math.sin(time * 0.25) * 0.003;
         mainGroup.position.y = Math.sin(time * 0.15) * 0.02;
     }
 
@@ -470,6 +469,67 @@ function animate() {
 // ======================================================
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initThreeWhenReady, 300);
+});
+
+// ======================================================
+// MÁQUINA DE ESCRIBIR - VERSIÓN MEJORADA (MÓVIL + ESCRITORIO)
+// ======================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const textElement = document.getElementById('typewriter-text');
+    if (!textElement) return;
+
+    const phrases = [
+        'Protegiendo tus derechos',
+        'y defendiendo tus intereses',
+        'con <span class="highlight">profesionalismo</span>'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let currentText = '';
+    let typingSpeed = 80;
+    let deletingSpeed = 40;
+    let pauseTime = 2000;
+
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        typingSpeed = 100;
+        deletingSpeed = 50;
+        pauseTime = 2500;
+    }
+
+    function typeWriter() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            currentText = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            currentText = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        textElement.innerHTML = currentText;
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            setTimeout(typeWriter, pauseTime);
+            return;
+        }
+
+        if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeWriter, 300);
+            return;
+        }
+
+        const speed = isDeleting ? deletingSpeed : typingSpeed;
+        setTimeout(typeWriter, speed);
+    }
+
+    setTimeout(typeWriter, 500);
 });
 
 // ======================================================
@@ -498,7 +558,6 @@ if (hamburger && navMenu) {
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
-    if (!header) return;
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
@@ -566,7 +625,7 @@ const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const nombre = document.getElementById('nombre').value.trim();
@@ -637,15 +696,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ======================================================
-// VOLTEAR TARJETAS - VERSIÓN SIMPLE (SOLO CLICK)
+// VOLTEAR TARJETAS - VERSIÓN MEJORADA (MÓVIL + ESCRITORIO)
 // ======================================================
 document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-        // Si el clic fue en el botón, no volteamos
-        if (e.target.closest('.btn-flip')) return;
-        // Toggle: si tiene la clase, la quita; si no, la pone
-        this.classList.toggle('flipped');
-    });
+    const isMobile = window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window;
+
+    // En móvil: solo click
+    if (isMobile) {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-flip')) return;
+            this.classList.toggle('flipped');
+        });
+    } else {
+        // En escritorio: hover + click
+        card.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('flipped')) {
+                this.classList.add('flipped');
+            }
+        });
+        card.addEventListener('mouseleave', function() {
+            if (this.classList.contains('flipped')) {
+                this.classList.remove('flipped');
+            }
+        });
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-flip')) return;
+            this.classList.toggle('flipped');
+        });
+    }
 
     // Accesibilidad
     card.setAttribute('tabindex', '0');
@@ -677,89 +755,5 @@ window.addEventListener('scroll', () => {
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
-    });
-});
-
-// ======================================================
-// MÁQUINA DE ESCRIBIR - VERSIÓN MEJORADA (MÓVIL + ESCRITORIO)
-// ======================================================
-document.addEventListener('DOMContentLoaded', function() {
-    const textElement = document.getElementById('typewriter-text');
-    if (!textElement) return;
-
-    // ===== FRASES QUE SE VAN A ESCRIBIR =====
-    const phrases = [
-        'Protegiendo tus derechos',
-        'y defendiendo tus intereses',
-        'con <span class="highlight">profesionalismo</span>'
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let currentText = '';
-    let typingSpeed = 80;
-    let deletingSpeed = 40;
-    let pauseTime = 2000;
-
-    // ===== DETECTAR MÓVIL PARA AJUSTAR VELOCIDAD =====
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        typingSpeed = 100;
-        deletingSpeed = 50;
-        pauseTime = 2500;
-    }
-
-    function typeWriter() {
-        const currentPhrase = phrases[phraseIndex];
-        
-        if (isDeleting) {
-            // Borrando
-            currentText = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            // Escribiendo
-            currentText = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        // Actualizar el HTML (permite etiquetas como <span>)
-        textElement.innerHTML = currentText;
-
-        // Determinar la siguiente acción
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            // Terminó de escribir - pausa antes de borrar
-            isDeleting = true;
-            setTimeout(typeWriter, pauseTime);
-            return;
-        }
-
-        if (isDeleting && charIndex === 0) {
-            // Terminó de borrar - pasa a la siguiente frase
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(typeWriter, 300);
-            return;
-        }
-
-        // Velocidad de escritura/borrado
-        const speed = isDeleting ? deletingSpeed : typingSpeed;
-        setTimeout(typeWriter, speed);
-    }
-
-    // ===== INICIAR DESPUÉS DE UN PEQUEÑO RETRASO =====
-    setTimeout(typeWriter, 500);
-
-    // ===== REINICIAR EN MÓVIL SI CAMBIA DE TAMAÑO =====
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            const newIsMobile = window.innerWidth <= 768;
-            if (newIsMobile !== isMobile) {
-                // Recargar la animación si cambia el tamaño
-                location.reload();
-            }
-        }, 500);
     });
 });
